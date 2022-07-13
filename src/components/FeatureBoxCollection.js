@@ -14,7 +14,7 @@ function FeatureBoxCollection() {
     <FeatureBox style={{
       marginLeft: 400,
       marginTop: 20
-    }}><img className='healthSizing' src={aperture_green}/>
+    }}><img className='healthSizingTopRow' src={aperture_green}/>
     <div className='title'>Secure Infrastructure</div>
 
     <div className='subtitle'>Key Capabilities</div>
@@ -34,7 +34,7 @@ function FeatureBoxCollection() {
     <FeatureBox style={{
       marginLeft: 400,
       marginTop: 20
-    }}><img className='healthSizing2' src={aperture_red}/>
+    }}><img className='healthSizingBottomRow' src={aperture_red}/>
     <div className='title'>Secure Data</div>
 
     <div className='subtitle'>Key Capabilities</div>
@@ -58,7 +58,65 @@ function FeatureBoxCollection() {
     <FeatureBox style={{
       marginLeft: 750,
       marginTop: -669,
-    }}></FeatureBox>
+    }}><img className='healthSizingTopRow' src={aperture_red}/>
+    <div className='title'>Secure Code</div>
+
+    <div className='subtitle'>Key Capabilities</div>
+
+    <div className='body'>Static Code Analysis
+        <img className='indicator' src={warning}/>
+    </div>
+
+    <div className='body'>Dynamic Code Analysis
+        <img className='indicator' src={check_mark}/>
+    </div>
+
+    <div className='body'>Encryption
+        <img className='indicator' src={warning}/>
+    </div>
+    </FeatureBox>
+
+    <FeatureBox style={{
+      marginLeft: 750,
+      marginTop: 20,
+    }}><img className='healthSizingBottomRow' src={aperture_green}/>
+    <div className='title'>Secure Integrations</div>
+
+    <div className='subtitle'>Key Capabilities</div>
+
+    <div className='body'>Authentication
+        <img className='indicator' src={check_mark}/>
+    </div>
+
+    <div className='body'>Traffic Analysis
+        <img className='indicator' src={check_mark}/>
+    </div>
+
+    <div className='body'>Exposure Protection
+        <img className='indicator' src={check_mark}/>
+    </div>
+
+    <div className='body'>Secure Protocols
+        <img className='indicator' src={check_mark}/>
+    </div>
+    </FeatureBox>
+
+    <FeatureBox style={{
+      marginLeft: 1100,
+      marginTop: -669,
+    }}><img className='healthSizingTopRow' src={aperture_red}/>
+    <div className='title'>Secure Monitoring & Logging</div>
+
+    <div className='subtitle'>Key Capabilities</div>
+
+    <div className='body'>Access Monitoring
+        <img className='indicator' src={warning}/>
+    </div>
+
+    <div className='body'>Log Centralization
+        <img className='indicator' src={warning}/>
+    </div>
+    </FeatureBox>
     </div>
     )
 }
