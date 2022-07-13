@@ -1,0 +1,15 @@
+{
+  "name": "code",
+  "status": "fail",
+  "subCategories": {
+    "staticCodeAnalysis": {
+      "status": "fail"
+    },
+    "dynamicCodeAnalysis": {
+      "status": "pass"
+    },
+    "encryption": {
+      "status": "fail"
+    }
+  }
+}

@@ -68,9 +68,9 @@
   }
   */
   
-  .menuNav li:first-child {
-    margin-top: 7rem;
-  }
+  /* .menuNav li:first-child {
+    margin-top: 1.5rem;
+  } */
 
   .navBar miscButton {
     position: fixed;

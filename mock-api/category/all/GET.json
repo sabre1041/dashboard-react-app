@@ -1,0 +1,22 @@
+{
+  "domains": [
+    {
+      "name": "infrastructure",
+      "status": "fail",
+      "subCategories": [
+        {
+          "category": "Platform Hardening",
+          "status": "fail"
+        },
+        {
+          "category": "Container Protection",
+          "status": "fail"
+        },
+        {
+          "category": "Secure Images",
+          "status": "pass"
+        }
+      ]
+    }
+  ]
+}
