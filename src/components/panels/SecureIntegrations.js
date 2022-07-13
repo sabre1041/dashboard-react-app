@@ -6,29 +6,60 @@ import aperture_red from '../screens/images/aperture-red-closed.png';
 import check_mark from '../screens/images/check_mark.png';
 import warning from '../screens/images/alert.png';
 
-function SecureIntegrations() {
+function SecureIntegrations(props) {
+
+    const [overall, setOverall] = useState();
+    const [authentication, setAuthentication] = useState();
+    const [trafficAnalysis, setTrafficAnalysis] = useState();
+    const [exposureProtection, setExposureProtection] = useState();
+    const [secureProtocols, setSecureProtocols] = useState();
+
+    useEffect(() => {
+        filterResponse(props.props)
+    }, [props])
+
+    const filterResponse = (props) => {
+        if(props === undefined || props.subCategories === undefined) {
+            return;
+        }
+        setOverall(props.status === "pass" ? aperture_green : aperture_red )
+        for(const prop of props.subCategories) {
+            if(prop.category === "Authentication") {
+                setAuthentication(prop.status === "pass" ? check_mark : warning)
+            }
+            else if(prop.category === "Traffic Analysis") {
+                setTrafficAnalysis(prop.status === "pass" ? check_mark : warning)
+            }
+            else if(prop.category === "Exposure Protection") {
+                setExposureProtection(prop.status === "pass" ? check_mark : warning)
+            }
+            else if(prop.category === "Secure Protocols") {
+                setSecureProtocols(prop.status === "pass" ? check_mark : warning)
+            }
+        }
+    }
 
     return (
         <div>
-            <img className='healthSizingBottomRow' src={aperture_green}/>
+            <img className='healthSizingBottomRow' src={overall}/>
             <div className='title'>Secure Integrations</div>
 
             <div className='subtitle'>Key Capabilities</div>
 
             <div className='body'>Authentication
-                <img className='indicator' src={check_mark}/>
+                <img className='indicator' src={authentication}/>
             </div>
 
             <div className='body'>Traffic Analysis
-                <img className='indicator' src={check_mark}/>
+                <img className='indicator' src={trafficAnalysis}/>
             </div>
 
             <div className='body'>Exposure Protection
-                <img className='indicator' src={check_mark}/>
+                <img className='indicator' src={exposureProtection}/>
             </div>
 
             <div className='body'>Secure Protocols
-                <img className='indicator' src={check_mark}/>
+                <img className='indicator' src={secureProtocols}/>
             </div>
         </div>
     )

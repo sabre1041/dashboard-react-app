@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import FeatureBox from '../FeatureBox';
 import '../Dashboard.css';
 import aperture_green from '../screens/images/aperture-green.png';
 import aperture_red from '../screens/images/aperture-red-closed.png';

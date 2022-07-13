@@ -13,7 +13,7 @@ function FeatureBoxCollection() {
     const [infra, setInfra] = useState({});
     const [data, setData] = useState({});
     const [code, setCode] = useState({});
-    const [integration, setIntegration] = useState({});
+    const [integrations, setIntegrations] = useState({});
     const [monitoring, setMonitoring] = useState({}); 
 
     useEffect(() => {
@@ -22,12 +22,36 @@ function FeatureBoxCollection() {
             //console.log(res.data.domains);
             filterResponse(res.data.domains)
         })
-    }, [])
+        const pageRefreshTimer = setInterval(() => {
+            axios.get(`http://localhost:9000/api/category/all`)
+            .then(res => {
+                //console.log(res.data.domains);
+                filterResponse(res.data.domains)
+            })
+        }, 5000); 
+        return () => {
+            clearInterval(pageRefreshTimer)
+        };
+    }, []);
+
+
 
     const filterResponse = (responses) => {
         for(const response of responses) {
             if(response.name === "infrastructure") {
                 setInfra(response); 
+            }
+            else if(response.name === "data") {
+                setData(response); 
+            }
+            else if(response.name === "code") {
+                setCode(response)
+            }
+            else if(response.name === "integrations") {
+                setIntegrations(response)
+            }
+            else if(response.name === "monitoringAndLogging") {
+                setMonitoring(response)
             }
         }
     } 
@@ -39,19 +63,19 @@ function FeatureBoxCollection() {
             </FeatureBox>
 
             <FeatureBox style={{ marginLeft: 400, marginTop: 20}}>
-                <SecureData />
+                <SecureData props={data}/>
             </FeatureBox>
         
             <FeatureBox style={{ marginLeft: 750, marginTop: -669}}>
-                <SecureCode />
+                <SecureCode props={code}/>
             </FeatureBox>
 
             <FeatureBox style={{ marginLeft: 750, marginTop: 20}}>
-                <SecureIntegrations />
+                <SecureIntegrations props={integrations}/>
             </FeatureBox>
 
             <FeatureBox style={{ marginLeft: 1100, marginTop: -669}}>
-                <SecureMonitoring />
+                <SecureMonitoring props={monitoring}/>
             </FeatureBox>
         </div>
     )

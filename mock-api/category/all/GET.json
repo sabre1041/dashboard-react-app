@@ -2,19 +2,95 @@
   "domains": [
     {
       "name": "infrastructure",
-      "status": "fail",
+      "status": "pass",
       "subCategories": [
         {
           "category": "Platform Hardening",
-          "status": "fail"
+          "status": "pass"
         },
         {
           "category": "Container Protection",
-          "status": "fail"
+          "status": "pass"
         },
         {
           "category": "Secure Images",
           "status": "pass"
+        }
+      ]
+    },
+    {
+      "name": "data",
+      "status": "fail",
+      "subCategories": [
+        {
+          "category": "Classification",
+          "status": "fail"
+        },
+        {
+          "category": "Vulnerability Scanning",
+          "status": "fail"
+        },
+        {
+          "category": "Encryption",
+          "status": "pass"
+        },
+        {
+          "category": "Loss Prevention",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "name": "code",
+      "status": "fail",
+      "subCategories": [
+        {
+          "category": "Static Code Analysis",
+          "status": "fail"
+        },
+        {
+          "category": "Dynamic Code Analysis",
+          "status": "pass"
+        },
+        {
+          "category": "Encryption",
+          "status": "fail"
+        }
+      ]
+    },
+    {
+      "name": "integrations",
+      "status": "pass",
+      "subCategories": [
+        {
+          "category": "Authentication",
+          "status": "pass"
+        },
+        {
+          "category": "Traffic Analysis",
+          "status": "pass"
+        },
+        {
+          "category": "Exposure Protection",
+          "status": "pass"
+        },
+        {
+          "category": "Secure Protocols",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "name": "monitoringAndLogging",
+      "status": "fail",
+      "subCategories": [
+        {
+          "category": "Access Monitoring",
+          "status": "pass"
+        },
+        {
+          "category": "Log Centralization",
+          "status": "fail"
         }
       ]
     }
