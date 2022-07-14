@@ -11,7 +11,7 @@ function SecureCode(props) {
     const [overall, setOverall] = useState();
     const [staticCodeAnalysis, setStaticCodeAnalysis] = useState();
     const [dynamicCodeAnalysis, setDynamicCodeAnalysis] = useState();
-    const [encryption, setEncryption] = useState();
+    const [vulnerabilityAssessment, setVulnerabilityAssessment] = useState();
 
     useEffect(() => {
         filterResponse(props.props)
@@ -29,8 +29,8 @@ function SecureCode(props) {
             else if(prop.name === "Dynamic Code Analysis") {
                 setDynamicCodeAnalysis(prop.flag === "green" ? check_mark : warning)
             }
-            else if(prop.name === "Encryption") {
-                setEncryption(prop.flag === "green" ? check_mark : warning)
+            else if(prop.name === "Vulnerability Assessment") {
+                setVulnerabilityAssessment(prop.flag === "green" ? check_mark : warning)
             }
         }
     }
@@ -50,8 +50,8 @@ function SecureCode(props) {
                 <img className='indicator' src={dynamicCodeAnalysis}/>
             </div>
 
-            <div className='body'>Encryption
-                <img className='indicator' src={encryption}/>
+            <div className='body'>Vulnerability Assessment
+                <img className='indicator' src={vulnerabilityAssessment}/>
             </div>
         </div>
     )
