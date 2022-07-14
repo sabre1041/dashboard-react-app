@@ -1,96 +1,96 @@
 {
   "domains": [
     {
-      "name": "infrastructure",
-      "status": "pass",
-      "subCategories": [
+      "name":"Secure Infrastructure",
+      "capabilities":[
+         {
+            "name":"Platform Hardening",
+            "flag":"green"
+         },
+         {
+            "name":"Container Protection",
+            "flag":"green"
+         },
+         {
+            "name":"Secure Images",
+            "flag":"green"
+         }
+      ],
+      "flag":"green"
+    },
+    {
+      "name": "Secure Data",
+      "flag": "red",
+      "capabilities": [
         {
-          "category": "Platform Hardening",
-          "status": "pass"
+          "name": "Classification",
+          "flag": "red"
         },
         {
-          "category": "Container Protection",
-          "status": "pass"
+          "name": "Vulnerability Scanning",
+          "flag": "red"
         },
         {
-          "category": "Secure Images",
-          "status": "pass"
+          "name": "Encryption",
+          "flag": "green"
+        },
+        {
+          "name": "Loss Prevention",
+          "flag": "green"
         }
       ]
     },
     {
-      "name": "data",
-      "status": "fail",
-      "subCategories": [
+      "name": "Secure Code",
+      "flag": "red",
+      "capabilities": [
         {
-          "category": "Classification",
-          "status": "fail"
+          "name": "Static Code Analysis",
+          "flag": "red"
         },
         {
-          "category": "Vulnerability Scanning",
-          "status": "fail"
+          "name": "Dynamic Code Analysis",
+          "flag": "green"
         },
         {
-          "category": "Encryption",
-          "status": "pass"
-        },
-        {
-          "category": "Loss Prevention",
-          "status": "pass"
+          "name": "Encryption",
+          "flag": "red"
         }
       ]
     },
     {
-      "name": "code",
-      "status": "fail",
-      "subCategories": [
+      "name": "Secure Integrations",
+      "flag": "green",
+      "capabilities": [
         {
-          "category": "Static Code Analysis",
-          "status": "fail"
+          "name": "Authentication",
+          "flag": "green"
         },
         {
-          "category": "Dynamic Code Analysis",
-          "status": "pass"
+          "name": "Traffic Analysis",
+          "flag": "green"
         },
         {
-          "category": "Encryption",
-          "status": "fail"
+          "name": "Exposure Protection",
+          "flag": "green"
+        },
+        {
+          "name": "Secure Protocols",
+          "flag": "green"
         }
       ]
     },
     {
-      "name": "integrations",
-      "status": "pass",
-      "subCategories": [
+      "name": "Secure Monitoring & Logging",
+      "flag": "red",
+      "capabilities": [
         {
-          "category": "Authentication",
-          "status": "pass"
+          "name": "Access Monitoring",
+          "flag": "green"
         },
         {
-          "category": "Traffic Analysis",
-          "status": "pass"
-        },
-        {
-          "category": "Exposure Protection",
-          "status": "pass"
-        },
-        {
-          "category": "Secure Protocols",
-          "status": "pass"
-        }
-      ]
-    },
-    {
-      "name": "monitoringAndLogging",
-      "status": "fail",
-      "subCategories": [
-        {
-          "category": "Access Monitoring",
-          "status": "pass"
-        },
-        {
-          "category": "Log Centralization",
-          "status": "fail"
+          "name": "Log Centralization",
+          "flag": "red"
         }
       ]
     }

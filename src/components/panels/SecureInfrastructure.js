@@ -15,19 +15,19 @@ function SecureInfrastructure(props) {
     }, [props])
 
     const filterResponse = (props) => {
-        if(props === undefined || props.subCategories === undefined) {
+        if(props === undefined || props.capabilities === undefined) {
             return;
         }
-        setOverall(props.status === "pass" ? aperture_green : aperture_red )
-        for(const prop of props.subCategories) {
-            if(prop.category === "Platform Hardening") {
-                setPlatformHardening(prop.status === "pass" ? check_mark : warning)
+        setOverall(props.flag === "green" ? aperture_green : aperture_red )
+        for(const prop of props.capabilities) {
+            if(prop.name === "Platform Hardening") {
+                setPlatformHardening(prop.flag === "green" ? check_mark : warning)
             }
-            else if(prop.category === "Container Protection") {
-                setContainerProtection(prop.status === "pass" ? check_mark : warning)
+            else if(prop.name === "Container Protection") {
+                setContainerProtection(prop.flag === "green" ? check_mark : warning)
             }
-            else if(prop.category === "Secure Images") {
-                setSecureImages(prop.status === "pass" ? check_mark : warning)
+            else if(prop.name === "Secure Images") {
+                setSecureImages(prop.flag === "green" ? check_mark : warning)
             }
         }
     }

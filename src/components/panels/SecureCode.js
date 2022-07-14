@@ -18,19 +18,19 @@ function SecureCode(props) {
     }, [props])
 
     const filterResponse = (props) => {
-        if(props === undefined || props.subCategories === undefined) {
+        if(props === undefined || props.capabilities === undefined) {
             return;
         }
-        setOverall(props.status === "pass" ? aperture_green : aperture_red )
-        for(const prop of props.subCategories) {
-            if(prop.category === "Static Code Analysis") {
-                setStaticCodeAnalysis(prop.status === "pass" ? check_mark : warning)
+        setOverall(props.flag === "green" ? aperture_green : aperture_red )
+        for(const prop of props.capabilities) {
+            if(prop.name === "Static Code Analysis") {
+                setStaticCodeAnalysis(prop.flag === "green" ? check_mark : warning)
             }
-            else if(prop.category === "Dynamic Code Analysis") {
-                setDynamicCodeAnalysis(prop.status === "pass" ? check_mark : warning)
+            else if(prop.name === "Dynamic Code Analysis") {
+                setDynamicCodeAnalysis(prop.flag === "green" ? check_mark : warning)
             }
-            else if(prop.category === "Encryption") {
-                setEncryption(prop.status === "pass" ? check_mark : warning)
+            else if(prop.name === "Encryption") {
+                setEncryption(prop.flag === "green" ? check_mark : warning)
             }
         }
     }

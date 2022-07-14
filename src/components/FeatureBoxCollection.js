@@ -17,13 +17,13 @@ function FeatureBoxCollection() {
     const [monitoring, setMonitoring] = useState({}); 
 
     useEffect(() => {
-        axios.get(`http://localhost:9000/api/category/all`)
+        axios.get(`https://telescope-backend-telescope-backend-prod.apps.cluster-9k69b.9k69b.sandbox1712.opentlc.com/domains`)
         .then(res => {
             //console.log(res.data.domains);
             filterResponse(res.data.domains)
         })
         const pageRefreshTimer = setInterval(() => {
-            axios.get(`http://localhost:9000/api/category/all`)
+            axios.get(`https://telescope-backend-telescope-backend-prod.apps.cluster-9k69b.9k69b.sandbox1712.opentlc.com/domains`)
             .then(res => {
                 //console.log(res.data.domains);
                 filterResponse(res.data.domains)
@@ -34,23 +34,21 @@ function FeatureBoxCollection() {
         };
     }, []);
 
-
-
     const filterResponse = (responses) => {
         for(const response of responses) {
-            if(response.name === "infrastructure") {
+            if(response.name === "Secure Infrastructure") {
                 setInfra(response); 
             }
-            else if(response.name === "data") {
+            else if(response.name === "Secure Data") {
                 setData(response); 
             }
-            else if(response.name === "code") {
+            else if(response.name === "Secure Code") {
                 setCode(response)
             }
-            else if(response.name === "integrations") {
+            else if(response.name === "Secure Integrations") {
                 setIntegrations(response)
             }
-            else if(response.name === "monitoringAndLogging") {
+            else if(response.name === "Secure Monitoring & Logging") {
                 setMonitoring(response)
             }
         }

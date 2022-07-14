@@ -17,22 +17,22 @@ function SecureData(props) {
     }, [props])
 
     const filterResponse = (props) => {
-        if(props === undefined || props.subCategories === undefined) {
+        if(props === undefined || props.capabilities === undefined) {
             return;
         }
-        setOverall(props.status === "pass" ? aperture_green : aperture_red )
-        for(const prop of props.subCategories) {
-            if(prop.category === "Classification") {
-                setClassification(prop.status === "pass" ? check_mark : warning)
+        setOverall(props.flag === "green" ? aperture_green : aperture_red )
+        for(const prop of props.capabilities) {
+            if(prop.name === "Classification") {
+                setClassification(prop.flag === "green" ? check_mark : warning)
             }
-            else if(prop.category === "Vulnerability Scanning") {
-                setVulnerabilityScanning(prop.status === "pass" ? check_mark : warning)
+            else if(prop.name === "Vulnerability Scanning") {
+                setVulnerabilityScanning(prop.flag === "green" ? check_mark : warning)
             }
-            else if(prop.category === "Encryption") {
-                setEncryption(prop.status === "pass" ? check_mark : warning)
+            else if(prop.name === "Encryption") {
+                setEncryption(prop.flag === "green" ? check_mark : warning)
             }
-            else if(prop.category === "Loss Prevention") {
-                setLossPrevention(prop.status === "pass" ? check_mark : warning)
+            else if(prop.name === "Loss Prevention") {
+                setLossPrevention(prop.flag === "green" ? check_mark : warning)
             }
         }
     }

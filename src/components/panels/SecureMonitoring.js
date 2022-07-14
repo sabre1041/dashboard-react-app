@@ -17,16 +17,16 @@ function SecureMonitoring(props) {
     }, [props])
 
     const filterResponse = (props) => {
-        if(props === undefined || props.subCategories === undefined) {
+        if(props === undefined || props.capabilities === undefined) {
             return;
         }
-        setOverall(props.status === "pass" ? aperture_green : aperture_red )
-        for(const prop of props.subCategories) {
-            if(prop.category === "Access Monitoring") {
-                setAccessMonitoring(prop.status === "pass" ? check_mark : warning)
+        setOverall(props.flag === "green" ? aperture_green : aperture_red )
+        for(const prop of props.capabilities) {
+            if(prop.name === "Access Monitoring") {
+                setAccessMonitoring(prop.flag === "green" ? check_mark : warning)
             }
-            else if(prop.category === "Log Centralization") {
-                setLogCentralization(prop.status === "pass" ? check_mark : warning)
+            else if(prop.name === "Log Centralization") {
+                setLogCentralization(prop.flag === "green" ? check_mark : warning)
             }
         }
     }
