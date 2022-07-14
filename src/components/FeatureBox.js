@@ -14,15 +14,18 @@ function FeatureBox({
      ...props}) {
     return <div {...props}
     style={{
-        backgroundColor: '#D3D3D3',
+        // backgroundColor: '#e4e7ed',
         borderRadius: 4,
+        borderWidth: 1,
+        border: '1px solid #e4e7ed',
         color: '#222',
         minHeight: 200,
         padding: 12,
         width: 300,
         height: 300,
-        marginLeft,
-        marginTop,
+        marginLeft: 20,
+        marginTop: 20,
+
          ...style,
     }}>
         {/*<div style={{color: 'gray', bottom: 50}}>Key Capabilities</div>*/}
