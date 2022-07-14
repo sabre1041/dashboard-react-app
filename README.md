@@ -66,3 +66,27 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Installation on OpenShift
+
+This will deploy the latest version of the app that has been published to quay.io, to a namespace called `dashboard-react-app-prod`. See below on how to deploy using a different version or namespace.
+1. Install the OpenShift GitOps operator using the OperatorHub and default settings.
+2. `oc create -f argocd-apps/ -n openshift-gitops`
+
+## Deploying to Production
+
+You will need credentials with permission to push to the production Telescope quay repo.
+
+1. `buildah bud -t quay.io/telescope/dashboard-app-react:latest .`
+2. `podman push quay.io/telescope/dashboard-app-react:latest`
+3. `oc delete po -l app=dashboard-react-app-deploy` -n dashboard-app-react-prod # Force OpenShift to pull a new version of the app
+
+### Deploying to Development
+
+You will need an image repository to push to, and credentials for it. You can create your own in quay.io, or use the internal OpenShift registry.
+
+1. `buildah bud -t quay.io/<your user>/dashboard-app-react:<your tag> .`
+2. `podman push quay.io/<your user>/dashboard-app-react:<your tag>`
+3. Push a change to the [the GitOps repo](https://github.com/RH-Telescope/dashboard-react-app-ops/blob/main/charts/values-DEV.yaml#L3`), setting the `image.tag` field to match the tag you used in the podman push command.
+4. `oc delete po -l app=dashboard-react-app-deploy` -n dashboard-app-react-dev # Force OpenShift to pull a new version of the app
+

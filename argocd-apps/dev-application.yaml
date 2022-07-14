@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dashboard-react-app-main-dev
+spec:
+  destination:
+    namespace: dashboard-react-app-dev
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - values-DEV.yaml
+    path: charts/
+    repoURL: 'https://github.com/RH-Telescope/dashboard-react-app-ops.git'
+    targetRevision: main
+  syncPolicy:
+    automated: {}
+
