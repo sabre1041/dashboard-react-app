@@ -20,13 +20,13 @@ function FeatureBoxCollection() {
         axios.get(`https://telescope-backend-telescope-backend-prod.apps.cluster-9k69b.9k69b.sandbox1712.opentlc.com/domains`)
         .then(res => {
             //console.log(res.data.domains);
-            filterResponse(res.data.domains)
+            filterResponse(res.data)
         })
         const pageRefreshTimer = setInterval(() => {
             axios.get(`https://telescope-backend-telescope-backend-prod.apps.cluster-9k69b.9k69b.sandbox1712.opentlc.com/domains`)
             .then(res => {
                 //console.log(res.data.domains);
-                filterResponse(res.data.domains)
+                filterResponse(res.data)
             })
         }, 5000); 
         return () => {
