@@ -48,7 +48,7 @@ function FeatureBoxCollection() {
             else if(response.name === "Secure Integrations") {
                 setIntegrations(response)
             }
-            else if(response.name === "Secure Monitoring and Logging") {
+            else if(response.name === "Secure Monitoring & Logging") {
                 setMonitoring(response)
             }
         }
