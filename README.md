@@ -69,9 +69,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## Installation on OpenShift
 
-This will deploy the latest version of the app that has been published to quay.io, to a namespace called `dashboard-react-app-prod`. See below on how to deploy using a different version or namespace.
-1. Install the OpenShift GitOps operator using the OperatorHub and default settings.
-2. `oc create -f argocd-apps/ -n openshift-gitops`
+This will deploy the latest version of the app that has been published to quay.io, to namespaces called `dashboard-react-app-dev` and `dashboard-react-app-prod`. See below on how to deploy using a different version or namespace.
+
+1. Clone this repository
+2. `cd dashboard-react-app`
+3. Install the OpenShift GitOps operator using the OperatorHub and default settings.
+4. Grant serviceaccount appropriate permissions `oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n openshift-gitops`
+5. `oc create -f argocd-apps/ -n openshift-gitops`
 
 ## Deploying to Production
 
