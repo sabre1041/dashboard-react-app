@@ -21,8 +21,8 @@ function FeatureBox({
         padding: 12,
         width: 300,
         height: 300,
-        marginLeft,
-        marginTop,
+        marginLeft: 20,
+        marginTop: 20,
          ...style,
     }}>
         {/*<div style={{color: 'gray', bottom: 50}}>Key Capabilities</div>*/}

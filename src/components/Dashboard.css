@@ -4,14 +4,10 @@
 }
 
 .header {
-padding: 50px 0;
-text-align: center;
-background: #222;
+  padding: 50px 0;
+  text-align: center;
+  background: #222;
 }
-
-/*.hamburger {
-  width:10px;
-}*/
 
 .header img {
   position: fixed;
@@ -57,21 +53,6 @@ background: #222;
   width: 100%;
 }
 
-/*
-a {
-  display: block;
-  padding: 10px 40px;
-  text-decoration: none;
-  color: #3fffd2;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-*/
-
-/* .menuNav li:first-child {
-  margin-top: 1.5rem;
-} */
-
 .navBar miscButton {
   position: fixed;
   margin-left: 20px;
@@ -85,11 +66,11 @@ a {
 }
 
 .healthSizingTopRow {
-    margin-top: 2px;
-    position: fixed;
-    height: 10vh;
-    margin-left: 100px;
-    top: 150px;   
+  margin-top: 2px;
+  position: fixed;
+  height: 10vh;
+  margin-left: 100px;
+  top: 150px;   
 }
 
 .healthSizingBottomRow {
@@ -101,9 +82,9 @@ a {
 }
 
 .title {
-    font-size: medium;
-    font-weight: bolder;
-    margin-top: 150px;
+  font-size: medium;
+  font-weight: bolder;
+  margin-top: 150px;
 }
 
 .subtitle {
@@ -121,6 +102,6 @@ a {
 }
 
 .indicator {
-    height: 1.6vh;
-    margin-left: 12px;
+  height: 1.6vh;
+  margin-left: 12px;
 }

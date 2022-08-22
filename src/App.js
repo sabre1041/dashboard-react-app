@@ -7,8 +7,8 @@ import './App.css';
 function App() {
   return (
     <div id="page-container">
-    <Header/>
-    <FeatureBoxCollection/>
+      <Header/>
+      <FeatureBoxCollection/>
     </div>
   );
 }
