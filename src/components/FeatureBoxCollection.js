@@ -1,133 +1,82 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FeatureBox from './FeatureBox';
 import './Dashboard.css';
-import aperture_green from './screens/images/aperture-green.png';
-import aperture_red from './screens/images/aperture-red-closed.png';
-import check_mark from './screens/images/check_mark.png';
-import warning from './screens/images/alert.png';
-import { Card, CardBody, CardTitle, CardText
- } from 'reactstrap';
+import SecureInfrastructure from './panels/SecureInfrastructure';
+import SecureData from './panels/SecureData';
+import SecureCode from './panels/SecureCode';
+import SecureIntegrations from './panels/SecureIntegrations';
+import SecureMonitoring from './panels/SecureMonitoring';
+import axios from 'axios';
 
-function FeatureBoxCollection(selection) {
-    if(selection.index === 0) return ( 
-    <div id="page-container">
-      
-        <FeatureBox style={{
-            marginLeft: 400,
-        marginTop: 20
-        }}><img className='healthSizingTopRow' src={aperture_green} style={styles.icons_large}/>
-        <div className='title'>Secure Infrastructure</div>
+function FeatureBoxCollection() {
 
-        <div className='subtitle' >Key Capabilities</div>
+    const [infra, setInfra] = useState({});
+    const [data, setData] = useState({});
+    const [code, setCode] = useState({});
+    const [integrations, setIntegrations] = useState({});
+    const [monitoring, setMonitoring] = useState({}); 
 
-        <div className='body'>Platform Hardening
-            <img className='indicator' style={styles.icons_small} src={check_mark}/>
-        </div>
+    useEffect(() => {
+        axios.get(`https://telescope-backend-telescope-backend-prod.apps.cluster-9k69b.9k69b.sandbox1712.opentlc.com/domains`)
+        .then(res => {
+            //console.log(res.data.domains);
+            filterResponse(res.data)
+        })
+        const pageRefreshTimer = setInterval(() => {
+            axios.get(`https://telescope-backend-telescope-backend-prod.apps.cluster-9k69b.9k69b.sandbox1712.opentlc.com/domains`)
+            .then(res => {
+                //console.log(res.data.domains);
+                filterResponse(res.data)
+            })
+        }, 5000); 
+        return () => {
+            clearInterval(pageRefreshTimer)
+        };
+    }, []);
 
-        <div className='body'>Container Protection
-            <img className='indicator' style={styles.icons_small} src={check_mark}/>
-        </div>
-        <div className='body'>Secure Images
-            <img className='indicator' style={styles.icons_small} src={check_mark}/>
-        </div>
-        </FeatureBox>
+    const filterResponse = (responses) => {
+        for(const response of responses) {
+            if(response.name === "Secure Infrastructure") {
+                setInfra(response); 
+            }
+            else if(response.name === "Secure Data") {
+                setData(response); 
+            }
+            else if(response.name === "Secure Code") {
+                setCode(response)
+            }
+            else if(response.name === "Secure Integrations") {
+                setIntegrations(response)
+            }
+            else if(response.name === "Secure Monitoring & Logging") {
+                setMonitoring(response)
+            }
+        }
+    } 
 
-        <FeatureBox style={{
-            marginLeft: 400,
-            marginTop: 20
-        }}><img className='healthSizingBottomRow' src={aperture_red} style={styles.icons_large}/>
-        <div className='title' style={{marginTop: 120}}>Secure Data</div>
+    return (
+        <div id="page-container">
+            <FeatureBox style={{ marginLeft: 400,marginTop: 20}}>
+                <SecureInfrastructure props={infra}/>
+            </FeatureBox>
 
-        <div className='subtitle'>Key Capabilities</div>
-
-        <div className='body'>Classification
-            <img className='indicator' src={warning} style={styles.icons_small}/>
-        </div>
-
-        <div className='body'>Vulnerability Scanning
-            <img className='indicator' src={warning} style={styles.icons_small}/>
-        </div>
-
-        <div className='body'>Encryption
-            <img className='indicator' src={check_mark} style={styles.icons_small}/>
-        </div>
-        <div className='body'>Loss Prevention
-            <img className='indicator' src={check_mark} style={styles.icons_small}/>
-        </div>
-        </FeatureBox>
+            <FeatureBox style={{ marginLeft: 400, marginTop: 20}}>
+                <SecureData props={data}/>
+            </FeatureBox>
         
-        <FeatureBox style={{
-            marginLeft: 750,
-            marginTop: -669,
-        }}><img className='healthSizingTopRow' src={aperture_red} style={styles.icons_large}/>
-        <div className='title'>Secure Code</div>
+            <FeatureBox style={{ marginLeft: 750, marginTop: -669}}>
+                <SecureCode props={code}/>
+            </FeatureBox>
 
-        <div className='subtitle'>Key Capabilities</div>
+            <FeatureBox style={{ marginLeft: 750, marginTop: 20}}>
+                <SecureIntegrations props={integrations}/>
+            </FeatureBox>
 
-        <div className='body'>Static Code Analysis
-            <img className='indicator' src={warning} style={styles.icons_small}/>
+            <FeatureBox style={{ marginLeft: 1100, marginTop: -669}}>
+                <SecureMonitoring props={monitoring}/>
+            </FeatureBox>
         </div>
-
-        <div className='body'>Dynamic Code Analysis
-            <img className='indicator' src={check_mark} style={styles.icons_small}/>
-        </div>
-
-        <div className='body'>Encryption
-            <img className='indicator' src={warning} style={styles.icons_small}/>
-        </div>
-        </FeatureBox>
-
-        <FeatureBox style={{
-            marginLeft: 750,
-            marginTop: 20,
-        }}><img className='healthSizingBottomRow' src={aperture_green} style={styles.icons_large}/>
-        <div className='title' style={{marginTop: 120}}>Secure Integrations</div>
-
-        <div className='subtitle'>Key Capabilities</div>
-
-        <div className='body'>Authentication
-            <img className='indicator' src={check_mark} style={styles.icons_small}/>
-        </div>
-
-        <div className='body'>Traffic Analysis
-            <img className='indicator' src={check_mark} style={styles.icons_small}/>
-        </div>
-
-        <div className='body'>Exposure Protection
-            <img className='indicator' src={check_mark} style={styles.icons_small}/>
-        </div>
-
-        <div className='body'>Secure Protocols
-            <img className='indicator' src={check_mark} style={styles.icons_small}/>
-        </div>
-        </FeatureBox>
-
-        <FeatureBox style={{
-            marginLeft: 1100,
-            marginTop: -669,
-        }}><img className='healthSizingTopRow' src={aperture_red} style={styles.icons_large}/>
-        <div className='title'>Secure Monitoring & Logging</div>
-
-        <div className='subtitle'>Key Capabilities</div>
-
-        <div className='body'>Access Monitoring
-            <img className='indicator' src={warning} style={styles.icons_small}/>
-        </div>
-
-        <div className='body'>Log Centralization
-            <img className='indicator' src={warning} style={styles.icons_small}/>
-        </div>
-        </FeatureBox>
-    
-    </div>
     )
-
-    else return(<div></div>)
 }
-
-const styles = {
-    icons_small: {height: 20, width: 20},
-    icons_large: {height: 115, width: 115, position: 'absolute'}
-};
 
 export default FeatureBoxCollection;

@@ -10,7 +10,7 @@ import {
     NavItem
 } from 'reactstrap';
 
-function Header({handleSelection}) {
+function Header() {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const [operatorColor, setOperatorColor] = useState("gray");
     const [ownerColor, setOwnerColor] = useState("");
@@ -40,74 +40,70 @@ function Header({handleSelection}) {
     }
 
     return (
-
-<div className='header'>
-    <nav className="navBar">
-    <img src={telescope_banner4} />
-        <hamButton onClick={handleToggle}>
-            {navbarOpen ? (
-                <MdClose style={{ color: "#fff", width: "40px", height: "40px" }} />
-        ) : (
-                <FiMenu style={{ color: "#fff", width: "40px", height: "40px" }} />
-        )}
-        </hamButton>
-
-        <ul className={`menuNav ${navbarOpen ? " showMenu" : ""}`}>
-            <div style={{ paddingBottom: "1em" }}/>
-            <div style={{borderBottomWidth: "1px", borderBottomStyle: "solid", borderBottomColor: "rgba(255,255,255,.25)"}} />
-            <div
-            onMouseOver={onMouseOverOperator} onClick={() => handleSelection(0)}
-            style={{
-                backgroundColor: operatorColor,                    
-                color: "white", 
-                fontSize: "1.5em", 
-                textAlign: "left",
-                paddingTop: "0.5em", 
-                paddingBottom: "0.5em", 
-                paddingLeft:"1.5em"}}
-            >
-                <li>
-                    Operator Lens
-                </li>
-            </div>
-            <div style={{borderBottomWidth: "1px", borderBottomStyle: "solid", borderBottomColor: "rgba(255,255,255,.25)"}} />
-            <div 
-            onMouseOver={onMouseOverOwner} onClick={() => handleSelection(1)}
-            style={{
-                backgroundColor: ownerColor,                    
-                color: "white", 
-                fontSize: "1.5em", 
-                textAlign: "left", 
-                paddingTop: "0.5em",
-                paddingBottom: "0.5em", 
-                paddingLeft:"1.5em"}}
-            >
-                <li>
-                    Owner Lens 
-                </li>
-            </div>
-            <div style={{borderBottomWidth: "1px", borderBottomStyle: "solid", borderBottomColor: "rgba(255,255,255,.25)"}} />
-            <div 
-            onMouseOver={onMouseOverExecutive} onClick={() => handleSelection(2)}
-            style={{
-                backgroundColor: executiveColor,                    
-                color: "white", 
-                fontSize: "1.5em", 
-                textAlign: "left",
-                paddingTop: "0.5em",
-                paddingBottom: "0.5em",
-                paddingLeft:"1.5em"}}
-            >
-                <li>
-                    Executive Lens
-                </li>
-            </div>
-            <div style={{borderBottomWidth: "1px", borderBottomStyle: "solid", borderBottomColor: "rgba(255,255,255,.25)"}} />
-        </ul>
-
-    
-    </nav>
-</div>  
-)
+        <div className='header'>
+            <nav className="navBar">
+                <hamButton onClick={handleToggle}>
+                    {navbarOpen ? (
+                        <MdClose style={{ color: "#fff", width: "40px", height: "40px" }} />
+                ) : (
+                        <FiMenu style={{ color: "#fff", width: "40px", height: "40px" }} />
+                )}
+                </hamButton>
+                <ul className={`menuNav ${navbarOpen ? " showMenu" : ""}`}>
+                    <div style={{ paddingBottom: "1em" }}/>
+                    <div style={{borderBottomWidth: "1px", borderBottomStyle: "solid", borderBottomColor: "rgba(255,255,255,.25)"}} />
+                    <div
+                    onMouseOver={onMouseOverOperator}
+                    style={{
+                        backgroundColor: operatorColor,                    
+                        color: "white", 
+                        fontSize: "1.5em", 
+                        textAlign: "left",
+                        paddingTop: "0.5em", 
+                        paddingBottom: "0.5em", 
+                        paddingLeft:"1.5em"}}
+                    >
+                        <li>
+                            Operator Lens
+                        </li>
+                    </div>
+                    <div style={{borderBottomWidth: "1px", borderBottomStyle: "solid", borderBottomColor: "rgba(255,255,255,.25)"}} />
+                    <div 
+                    onMouseOver={onMouseOverOwner}
+                    style={{
+                        backgroundColor: ownerColor,                    
+                        color: "white", 
+                        fontSize: "1.5em", 
+                        textAlign: "left", 
+                        paddingTop: "0.5em",
+                        paddingBottom: "0.5em", 
+                        paddingLeft:"1.5em"}}
+                    >
+                        <li>
+                            Owner Lens 
+                        </li>
+                    </div>
+                    <div style={{borderBottomWidth: "1px", borderBottomStyle: "solid", borderBottomColor: "rgba(255,255,255,.25)"}} />
+                    <div 
+                    onMouseOver={onMouseOverExecutive}
+                    style={{
+                        backgroundColor: executiveColor,                    
+                        color: "white", 
+                        fontSize: "1.5em", 
+                        textAlign: "left",
+                        paddingTop: "0.5em",
+                        paddingBottom: "0.5em",
+                        paddingLeft:"1.5em"}}
+                    >
+                        <li>
+                            Executive Lens
+                        </li>
+                    </div>
+                    <div style={{borderBottomWidth: "1px", borderBottomStyle: "solid", borderBottomColor: "rgba(255,255,255,.25)"}} />
+                </ul>
+            </nav>
+            <img src={telescope_banner4}/>
+        </div>  
+    )
 }
 export default Header;
