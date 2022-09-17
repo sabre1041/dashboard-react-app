@@ -1,5 +1,8 @@
 # Telescope Dashboard React App
 
+[![Build Status](https://github.com/RH-Telescope/dashboard-react-app/workflows/CI/badge.svg?branch=main)](https://github.com/RH-Telescope/dashboard-react-app/actions?workflow=CI)
+ [![Docker Repository on Quay](https://quay.io/repository/telescope/dashboard-react-app/status "Image Repository on Quay")](https://quay.io/repository/telescope/dashboard-react-app)
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -93,4 +96,3 @@ You will need an image repository to push to, and credentials for it. You can cr
 2. `podman push quay.io/<your user>/dashboard-app-react:<your tag>`
 3. Push a change to the [the GitOps repo](https://github.com/RH-Telescope/dashboard-react-app-ops/blob/main/charts/values-DEV.yaml#L3`), setting the `image.tag` field to match the tag you used in the podman push command.
 4. `oc delete po -l app=dashboard-react-app-deploy` -n dashboard-app-react-dev # Force OpenShift to pull a new version of the app
-
