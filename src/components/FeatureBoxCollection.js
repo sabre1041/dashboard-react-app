@@ -15,16 +15,17 @@ function FeatureBoxCollection() {
     const [data, setData] = useState({});
     const [code, setCode] = useState({});
     const [integrations, setIntegrations] = useState({});
-    const [monitoring, setMonitoring] = useState({}); 
+    const [monitoring, setMonitoring] = useState({});
+    let BACKEND_URL = Config.backend_url
 
     useEffect(() => {
-        axios.get(`${Config.backend_url}/domains`)
+        axios.get(`${BACKEND_URL}/domains`)
         .then(res => {
             //console.log(res.data.domains);
             filterResponse(res.data)
         })
         const pageRefreshTimer = setInterval(() => {
-            axios.get(`${Config.backend_url}/domains`)
+            axios.get(`${BACKEND_URL}/domains`)
             .then(res => {
                 //console.log(res.data.domains);
                 filterResponse(res.data)
