@@ -5,13 +5,13 @@ on:
       - main
   push:
     branches:
-      - main
+      - fix
     tags:
       - v*
 
 env:
   DEFAULT_IMAGE: "quay.io/telescope/dashboard-react-app"
-  PUSH_BRANCH: "main"
+  PUSH_BRANCH: "fix"
 
 jobs:
   ci:
